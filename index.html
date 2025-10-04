@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GTA 5 RP — Рулетка</title>
   <style>
     body {
@@ -20,6 +21,7 @@
       color: #fff;
       text-shadow: 2px 2px 4px #000;
       margin-bottom: 30px;
+      text-align: center;
     }
 
     .controls {
@@ -28,9 +30,15 @@
       display: inline-block;
     }
 
-    /* Стиль для селекта с кастомной стрелкой и тёмным фоном */
+    .controls label {
+      font-size: 18px;
+      margin-right: 8px;
+      user-select: none;
+    }
+
+    /* Селект с черным текстом и красивым дизайном */
     .controls select {
-      padding: 12px 40px 12px 18px; /* место для стрелки */
+      padding: 12px 40px 12px 18px;
       font-size: 18px;
       border-radius: 8px;
       border: none;
@@ -42,13 +50,21 @@
         inset 0 -2px 5px rgba(255, 255, 255, 0.2);
       cursor: pointer;
       transition: background 0.3s ease;
-      -webkit-appearance: none; /* убрать стандартный стиль */
+      -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
       position: relative;
+      user-select: none;
     }
 
-    /* Кастомная стрелка */
+    .controls select:hover,
+    .controls select:focus {
+      background: linear-gradient(145deg, #4cae38, #3a6d18);
+      outline: none;
+      color: black;
+    }
+
+    /* Кастомная стрелка для селекта */
     .controls select::after {
       content: "";
       position: absolute;
@@ -65,13 +81,6 @@
       z-index: 2;
     }
 
-    /* На ховер/фокус меняем фон */
-    .controls select:hover,
-    .controls select:focus {
-      background: linear-gradient(145deg, #4cae38, #3a6d18);
-      outline: none;
-    }
-
     .controls button {
       padding: 12px 25px;
       font-size: 18px;
@@ -83,6 +92,7 @@
       color: #000;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       transition: transform 0.2s ease;
+      user-select: none;
     }
 
     .controls button:hover {
@@ -130,6 +140,7 @@
         inset 0 -3px 7px rgba(0,0,0,0.8);
       padding: 10px 0;
       user-select: none;
+      flex-shrink: 0;
     }
 
     .zero-column .cell {
@@ -154,6 +165,7 @@
       gap: 10px;
       width: 960px;
       box-sizing: border-box;
+      flex-shrink: 0;
     }
 
     .cell {
@@ -188,6 +200,118 @@
       box-shadow: 0 0 20px 10px yellow;
       transform: scale(1.1);
       z-index: 2;
+    }
+
+    /* --- Адаптивность --- */
+    @media (max-width: 1024px) {
+      .roulette-table {
+        width: 720px;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(3, 70px);
+      }
+
+      .zero-column {
+        width: 65px;
+      }
+
+      .zero-column .cell,
+      .cell {
+        height: 70px;
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      h1 {
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+
+      .controls {
+        margin-bottom: 20px;
+      }
+
+      .controls label {
+        font-size: 16px;
+      }
+
+      .controls select {
+        font-size: 16px;
+        padding: 10px 36px 10px 14px;
+        margin-right: 10px;
+      }
+
+      .controls button {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+
+      .table-container {
+        padding: 20px;
+      }
+
+      .roulette-table {
+        width: 600px;
+        grid-template-rows: repeat(3, 60px);
+      }
+
+      .zero-column {
+        width: 55px;
+      }
+
+      .zero-column .cell,
+      .cell {
+        height: 60px;
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .table-container {
+        padding: 15px;
+      }
+
+      .roulette-table {
+        width: 480px;
+        grid-template-rows: repeat(3, 50px);
+      }
+
+      .zero-column {
+        width: 45px;
+      }
+
+      .zero-column .cell,
+      .cell {
+        height: 50px;
+        font-size: 16px;
+      }
+
+      .controls {
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .controls label,
+      .controls select,
+      .controls button {
+        font-size: 14px;
+        display: block;
+        width: 100%;
+        margin: 6px 0;
+      }
+
+      .controls select {
+        margin-right: 0;
+        padding: 8px 36px 8px 14px;
+      }
+
+      .controls button {
+        padding: 10px 0;
+      }
     }
   </style>
 </head>
